@@ -81,7 +81,6 @@ public class QuizActivity extends AppCompatActivity {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
         Intent intent = CheatActivity.newIntent(QuizActivity.this, answerIsTrue);
         startActivityForResult(intent, REQUEST_CODE_CHEAT);
-
       }
     });
     updateQuestion();
@@ -89,6 +88,7 @@ public class QuizActivity extends AppCompatActivity {
 
   @Override
   protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
     if (resultCode != Activity.RESULT_OK) {
       return;
     }
@@ -97,7 +97,7 @@ public class QuizActivity extends AppCompatActivity {
       if (data == null) {
         return;
       }
-      mIsCheater =CheatActivity.wasAnswerShown(data);
+      mIsCheater = CheatActivity.wasAnswerShown(data);
     }
   }
 
@@ -156,7 +156,7 @@ public class QuizActivity extends AppCompatActivity {
         messageResId = R.string.incorrect_toast;
       }
 
-      Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
     }
+    Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
   }
 }
